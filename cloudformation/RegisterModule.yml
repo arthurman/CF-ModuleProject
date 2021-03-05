@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Default Module Version and Registry
+
+Parameters:
+
+  pModuleName:
+    Type: String
+    Description: Module name that you want to register
+    Default: MP::CloudWatch::SampleCWAlarm::MODULE
+
+  pModulePackage:
+    Type: String
+    Description: s3 bucket for where your module is stored
+    Default: https://cf-modules-sandbox.s3.amazonaws.com/CW-ParentModule.json
+
+Resources:
+  CWModuleVersion1:
+    Type: 'AWS::CloudFormation::ModuleVersion'
+    Properties:
+      ModuleName: !Ref pModuleName
+      ModulePackage: !Ref pModulePackage
+
+  ModuleDefaultVersion:
+    Type: 'AWS::CloudFormation::ModuleDefaultVersion'
+    Properties:
+      Arn: !Ref CWModuleVersion1
