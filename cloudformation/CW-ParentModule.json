@@ -14,7 +14,7 @@
 
   "Resources": {
       "rCPUAlarm": {
-          "Type": "MP::CloudWatch::SampleCWAlarm::MODULE",
+          "Type": "My::CloudWatch::SampleAlarm::MODULE",
           "DeletionPolicy": "Delete",
           "Properties": {
               "MetricName": "CPUUtilization",
