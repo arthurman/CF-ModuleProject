@@ -6,21 +6,21 @@ Parameters:
   pModuleName:
     Type: String
     Description: Module name that you want to register
-    Default: MP::CloudWatch::SampleCWAlarm::MODULE
+    Default: 'My::CloudWatch::SampleAlarm::MODULE'
 
   pModulePackage:
     Type: String
     Description: s3 bucket for where your module is stored
-    Default: https://cf-modules-sandbox.s3.amazonaws.com/CW-ParentModule.json
+    Default: 's3://cf-modules-sandbox/CW-Module-Package'
 
 Resources:
-  CWModuleVersion1:
-    Type: 'AWS::CloudFormation::ModuleVersion'
+  rCWModuleVersion1:
+    Type: AWS::CloudFormation::ModuleVersion
     Properties:
       ModuleName: !Ref pModuleName
       ModulePackage: !Ref pModulePackage
 
-  ModuleDefaultVersion:
-    Type: 'AWS::CloudFormation::ModuleDefaultVersion'
+  rModuleDefaultVersion:
+    Type: AWS::CloudFormation::ModuleDefaultVersion
     Properties:
-      Arn: !Ref CWModuleVersion1
+      Arn: !Ref rCWModuleVersion1
